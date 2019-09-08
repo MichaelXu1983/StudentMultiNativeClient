@@ -6,7 +6,11 @@
 ## 技术栈
 React Native 0.60 + Ant Design Mobile RN of React 3.0 + Redux
 
-## 截图
+## 截图  
+
+![](./src/assets/images/other/AppPreview.jpg)  
+
+![](./src/assets/images/other/QRCode.jpg)  
 
 ## 目录
 1. [环境安装](#环境安装)
