@@ -407,7 +407,7 @@ subprojects {
 4. 生成发行 APK 包
 ```shell
 cd android
-./gradlew assembleRelease
+./gradlew assembleRelease // 生成的 APK 文件位于 android/app/build/outputs/apk/release/app-release.apk
 ```  
 
 ### <a name="iOS打包">iOS 打包</a>  
@@ -415,5 +415,15 @@ cd android
 2. 在 Xcode 中选择 Preferences -> Account ，登录你的 Apple ID 
 3. 点击左侧项目目录，然后在右侧 TARGETS 中选择你需要发布的项目，再选择 General -> Signing -> Team 中选择你的 Apple ID 
 4. 在 Xcode 中选择 Product -> Scheme -> Edit Scheme，然后选择 Run 选项卡，将 Build Configuration 设置为 Release (需要实时调试再将 Buiid Configuration 改为 debug )
-5. 访问 [Appstore Connect](https://appstoreconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/app) 登录你的 Apple ID，创建对应的 App
-6. 在 Xcode 中选择 Product -> Archive，过会弹出面板，就可以按照面板中的提示，导出 .ipa 文件或发布到 App Store 了（ipa 文件可以上传到蒲公英等平台发布）
+5. 在 Xcode 中选择 Product -> Archive，过会弹出面板，就可以按照面板中的提示，导出 .ipa 文件或发布到 App Store 了
+6. 访问 [Appstore Connect](https://appstoreconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/app) 登录你的 Apple ID，创建对应的“版本或平台”，填写资料提交审核，如下图：  
+
+![AppstoreConnect提交审核界面](src/assets/images/other/appstoreconnect.apple.com_WebObjects_iTunesConnect.woa_ra_ng_app_ios_versioninfo.png)  
+
+> 通过 Xcode 上传 ipa 时，如果一直卡在 Authenticating... ，请执行以下命令：  
+```bash
+cd ~
+mv .itmstransporter/ .old_itmstransporter/ 
+"/Applications/Xcode.app/Contents/SharedFrameworks/ContentDeliveryServices.framework/itms/bin/iTMSTransporter" // 该命令如果执行报错，请自行查找 `iTMSTransporter` 的路径替换
+```  
+
