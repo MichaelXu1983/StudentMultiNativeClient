@@ -25,8 +25,9 @@ class Index extends Component {
   };
   state = {
     //定义状态机变量，只能使用this.setState改变其值，并且能通过计算得出的，就不要定义成需要重复渲染的状态机变量，减少渲染开销，提高性能
-    data: ['1'],
+    // data: ['1'],
     recomList: [],
+    guideList: [],
     imgHeight: 176,
     hasNewNotice: false, // 新公告提示红点
     hasNewMessage: false, // 新消息提示红点
@@ -37,19 +38,24 @@ class Index extends Component {
         recomList: r.value,
       });
     });
-    // simulate img loading
-    setTimeout(() => {
+    httpRequest('/api/v1/contents/1/174').then(r => {
       this.setState({
-        data: ['AiyWuByWklrrUDlFignR'],
+        guideList: r.value,
       });
-    }, 100);
+    });
+    // simulate img loading
+    // setTimeout(() => {
+    //   this.setState({
+    //     data: ['AiyWuByWklrrUDlFignR'],
+    //   });
+    // }, 100);
   }
   onHorizontalSelectedIndexChange(index) {
     /* tslint:disable: no-console */
     console.log('horizontal change to', index);
   }
   render() {
-    const {recomList} = this.state;
+    const {recomList, guideList} = this.state;
     return (
       //里面只能包含值或表达式，不能有逻辑语句，但可以调用包含逻辑语句的函数表达式
       <ScrollView
@@ -86,7 +92,7 @@ class Index extends Component {
               <View>
                 <Image
                   style={_styleSheet['index__message-icon']}
-                  source={require('@/src/assets/images/index/message.png')}
+                  source={require('@/src/assets/images/index/crown.png')}
                 />
                 {this.state.hasNewMessage && (
                   <View style={_styleSheet['index__message-status']}>
@@ -119,7 +125,7 @@ class Index extends Component {
               <Text
                 numberOfLines={1}
                 style={_styleSheet['index-card__tips-text']}>
-                点击【开始学习】，开始你的编程之旅
+                点击【开始学习】，开始你的编程之旅吧
               </Text>
             </View>
             <View style={_styleSheet['index-card__footer']}>
@@ -128,34 +134,35 @@ class Index extends Component {
                   style={_styleSheet['index-card__icon-ok']}
                   source={require('@/src/assets/images/index/ok.png')}
                 />
-                <Text style={_styleSheet['index-card__icon-text']}>编程</Text>
-              </View>
-              <View style={_styleSheet['index-card__icon']}>
-                <Image
-                  style={_styleSheet['index-card__icon-ok']}
-                  source={require('@/src/assets/images/index/ok.png')}
-                />
-                <Text style={_styleSheet['index-card__icon-text']}>逻辑</Text>
-              </View>
-              <View style={_styleSheet['index-card__icon']}>
-                <Image
-                  style={_styleSheet['index-card__icon-ok']}
-                  source={require('@/src/assets/images/index/ok.png')}
-                />
                 <Text style={_styleSheet['index-card__icon-text']}>思维</Text>
+              </View>
+              <View style={_styleSheet['index-card__icon']}>
+                <Image
+                  style={_styleSheet['index-card__icon-ok']}
+                  source={require('@/src/assets/images/index/ok.png')}
+                />
+                <Text style={_styleSheet['index-card__icon-text']}>创新</Text>
+              </View>
+              <View style={_styleSheet['index-card__icon']}>
+                <Image
+                  style={_styleSheet['index-card__icon-ok']}
+                  source={require('@/src/assets/images/index/ok.png')}
+                />
+                <Text style={_styleSheet['index-card__icon-text']}>合作</Text>
               </View>
             </View>
           </View>
           <View style={_styleSheet['index-notice']}>
             <View style={_styleSheet.index__maintitle}>
-              <Text style={_styleSheet['index__maintitle-text']}>最新推荐</Text>
+              <Text style={_styleSheet['index__maintitle-text']}>官方推荐</Text>
             </View>
 
             <Carousel
               style={_styleSheet['index-notice__swiper']}
               dots={false}
-              autoplay={true}
-              infinite={true}
+              autoplay
+              infinite
+              autoplayInterval={6000}
               afterChange={this.onHorizontalSelectedIndexChange}>
               {Array.isArray(recomList) &&
                 recomList.length !== 0 &&
@@ -181,10 +188,30 @@ class Index extends Component {
           </View>
           <View style={_styleSheet['index-guide']}>
             <View style={_styleSheet.index__maintitle}>
-              <Text style={_styleSheet['index__maintitle-text']}>上课指引</Text>
+              <Text style={_styleSheet['index__maintitle-text']}>操作指引</Text>
             </View>
             <View style={_styleSheet['index-guide__content']}>
-              <TouchableWithoutFeedback
+              {Array.isArray(guideList) &&
+                guideList.length !== 0 &&
+                guideList.map(item => (
+                  <TouchableWithoutFeedback
+                    key="attentionDetail"
+                    onPress={() =>
+                      this.props.navigation.navigate('Webview', {
+                        sourceUri: item.source,
+                        title: item.title,
+                      })
+                    }
+                    style={_styleSheet.index__Navigator}>
+                    <Image
+                      style={_styleSheet['index-guide__bg']}
+                      source={{
+                        uri: getGlobalData('businessDomain') + item.imageUrl,
+                      }}
+                    />
+                  </TouchableWithoutFeedback>
+                ))}
+              {/* <TouchableWithoutFeedback
                 key="attentionDetail"
                 onPress={() =>
                   this.props.navigation.navigate('Webview', {
@@ -212,7 +239,7 @@ class Index extends Component {
                   style={_styleSheet['index-guide__bg-right']}
                   source={require('@/src/assets/images/index/guide_bg_right.png')}
                 />
-              </TouchableWithoutFeedback>
+              </TouchableWithoutFeedback>*/}
             </View>
           </View>
         </View>

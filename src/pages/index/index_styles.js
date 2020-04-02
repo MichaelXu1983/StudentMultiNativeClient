@@ -42,8 +42,8 @@ export default StyleSheet.create({
     height: scalePx2dp(23),
   },
   'index__message-icon': {
-    width: scalePx2dp(17.5),
-    height: scalePx2dp(23),
+    width: scalePx2dp(28),
+    height: scalePx2dp(28),
   },
   'index__notice-status': {
     position: 'absolute',
@@ -196,6 +196,7 @@ export default StyleSheet.create({
   },
   'index-notice': {
     width: '90%',
+    height: scalePx2dp(116),
     marginTop: scalePx2dp(30),
     marginRight: 'auto',
     marginBottom: 0,
@@ -249,8 +250,16 @@ export default StyleSheet.create({
   },
   'index-guide__content': {
     position: 'relative',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     width: '100%',
     height: scalePx2dp(80),
+  },
+  'index-guide__bg': {
+    width: '48%',
+    height: scalePx2dp(80),
+    marginRight: '4%',
+    borderRadius: scalePx2dp(4),
   },
   'index-guide__bg-left': {
     position: 'absolute',

@@ -60,12 +60,12 @@ class Users extends Component {
                 <View style={_styleSheet['users-link__icon']}>
                   <Image
                     style={_styleSheet['users-link__icon-help']}
-                    source={require('@/src/assets/images/users/icon/message.png')}
+                    source={require('@/src/assets/images/users/icon/crown.png')}
                   />
                 </View>
                 <View style={_styleSheet['users-link__title']}>
                   <Text style={_styleSheet['users-link__title-text']}>
-                    消息中心
+                    官方推荐
                   </Text>
                 </View>
                 <View style={_styleSheet['users-link__subtitle']}>
@@ -106,7 +106,13 @@ class Users extends Component {
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
-              onPress={() => this.props.navigation.navigate('HelpList')}
+              // onPress={() => this.props.navigation.navigate('HelpList')}
+              onPress={() =>
+                this.props.navigation.navigate('Webview', {
+                  sourceUri: 'https://www.codekid.top/#/pages/users/help_list',
+                  title: '帮助中心',
+                })
+              }
               style={_styleSheet.index__Navigator}>
               <View style={_styleSheet['users-link__item']}>
                 <View style={_styleSheet['users-link__icon']}>
@@ -129,7 +135,13 @@ class Users extends Component {
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
-              onPress={() => this.props.navigation.navigate('Setting')}
+              // onPress={() => this.props.navigation.navigate('Setting')}
+              onPress={() =>
+                this.props.navigation.navigate('Webview', {
+                  sourceUri: 'https://www.codekid.top/#/pages/users/setting',
+                  title: '设置',
+                })
+              }
               style={_styleSheet.index__Navigator}>
               <View style={_styleSheet['users-link__item']}>
                 <View style={_styleSheet['users-link__icon']}>

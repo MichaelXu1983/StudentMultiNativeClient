@@ -58,6 +58,7 @@
 		2D02E47B1E0B4A5D006451C7 /* StudentMultiNativeClient-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StudentMultiNativeClient-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* StudentMultiNativeClient-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StudentMultiNativeClient-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B23F09F579F4480B8AAC4BB /* libPods-StudentMultiNativeClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StudentMultiNativeClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C242A4F2435A6B400F22F33 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		652931CDBB612BCCC5471F32 /* Pods-StudentMultiNativeClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentMultiNativeClient.debug.xcconfig"; path = "Target Support Files/Pods-StudentMultiNativeClient/Pods-StudentMultiNativeClient.debug.xcconfig"; sourceTree = "<group>"; };
 		69841D3C2A5838725CCC524B /* Pods-StudentMultiNativeClient-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentMultiNativeClient-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-StudentMultiNativeClient-tvOS/Pods-StudentMultiNativeClient-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		77F2CD0A9BA7250CC0D33100 /* Pods-StudentMultiNativeClient-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentMultiNativeClient-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-StudentMultiNativeClient-tvOSTests/Pods-StudentMultiNativeClient-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -329,6 +330,7 @@
 				English,
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -591,6 +593,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				13B07FB21A68108700A75B9A /* Base */,
+				4C242A4F2435A6B400F22F33 /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			path = StudentMultiNativeClient;
@@ -673,6 +676,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 4;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 42ZKCHY892;
 				INFOPLIST_FILE = StudentMultiNativeClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

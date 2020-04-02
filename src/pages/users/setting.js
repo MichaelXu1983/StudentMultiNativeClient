@@ -46,11 +46,11 @@ class Setting extends Component {
                     关于我们
                   </Text>
                 </View>
-                <View style={_styleSheet['setting-link__extra']}>
+                {/* <View style={_styleSheet['setting-link__extra']}>
                   <Text style={_styleSheet['setting-link__extra-text']}>
                     1.0.0
                   </Text>
-                </View>
+                </View> */}
                 <View style={_styleSheet['setting-link__arrow']}>
                   <Image
                     style={_styleSheet['setting-link__arrow--active']}

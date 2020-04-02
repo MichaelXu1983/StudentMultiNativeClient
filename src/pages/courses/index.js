@@ -24,16 +24,20 @@ class Courses extends Component {
   state = {
     //定义状态机变量，只能使用this.setState改变其值，并且能通过计算得出的，就不要定义成需要重复渲染的状态机变量，减少渲染开销，提高性能
     list: [],
+    mainTitle: '',
+    subTitle: '',
   };
   componentDidMount() {
     httpRequest('/api/v1/contents/1/153').then(r => {
       this.setState({
         list: r.value,
+        mainTitle: r.value[0].author,
+        subTitle: r.value[0].summary,
       });
     });
   }
   render() {
-    const {list} = this.state;
+    const {list, mainTitle, subTitle} = this.state;
 
     return (
       //里面只能包含值或表达式，不能有逻辑语句，但可以调用包含逻辑语句的函数表达式
@@ -52,15 +56,14 @@ class Courses extends Component {
             />
             <View style={_styleSheet['courses-header__intro-maintitle']}>
               <Text style={_styleSheet['courses-header__maintitle-text']}>
-                计算机科学基础
+                {mainTitle}
               </Text>
             </View>
             <View style={_styleSheet['courses-header__intro-subtitle']}>
               <Text
                 numberOfLines={4}
                 style={_styleSheet['courses-header__subtitle-text']}>
-                通过这些面向 4-18
-                岁年龄段的课程，可以让孩子在动手创造益智游戏过程中，学习到编程思维，这将对他今后的数学、物理、化学等等学科产生积极的影响！
+                {subTitle}
               </Text>
             </View>
           </View>
