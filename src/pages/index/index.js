@@ -195,7 +195,7 @@ class Index extends Component {
                 guideList.length !== 0 &&
                 guideList.map(item => (
                   <TouchableWithoutFeedback
-                    key="attentionDetail"
+                    key={item.id}
                     onPress={() =>
                       this.props.navigation.navigate('Webview', {
                         sourceUri: item.source,
