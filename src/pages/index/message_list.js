@@ -10,14 +10,14 @@ import httpRequest from '@/src/utils/request';
 
 import globals from '@/src/styles/globals';
 
-import indexStyleSheet from './recomm_list_styles.js';
+import indexStyleSheet from './message_list_styles.js';
 import {getGlobalData} from '@/src/utils/index';
 
 const _styleSheet = indexStyleSheet;
 
 class MessageList extends Component {
   static navigationOptions = {
-    title: '官方推荐',
+    title: '消息中心',
   };
   state = {
     //定义状态机变量，只能使用this.setState改变其值，并且能通过计算得出的，就不要定义成需要重复渲染的状态机变量，减少渲染开销，提高性能
@@ -43,8 +43,8 @@ class MessageList extends Component {
         }}
         scrollEventThrottle={200}
         style={globals.scrollViewContainer}>
-        <View style={_styleSheet.notice}>
-          <View style={_styleSheet['notice-item__container']}>
+        <View style={_styleSheet.message}>
+          <View style={_styleSheet['message-item__container']}>
             {list.map(item => (
               <TouchableWithoutFeedback
                 key={item.id}

@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
 } from 'react-native';
+import httpRequest from '@/src/utils/request';
 
 import globals from '@/src/styles/globals';
 
@@ -18,9 +19,20 @@ class Setting extends Component {
   static navigationOptions = {
     title: '设置',
   };
-  componentDidMount() {}
+  state = {
+    list: [],
+  };
+  componentDidMount() {
+    httpRequest('/api/v1/contents/1/176').then(r => {
+      this.setState({
+        list: r.value,
+      });
+    });
+  }
 
   render() {
+    const {list} = this.state;
+
     return (
       //里面只能包含值或表达式，不能有逻辑语句，但可以调用包含逻辑语句的函数表达式
       <ScrollView
@@ -32,7 +44,35 @@ class Setting extends Component {
         style={globals.scrollViewContainer}>
         <View style={_styleSheet.setting}>
           <View style={_styleSheet['setting-link']}>
-            <TouchableWithoutFeedback
+            {list.map(item => (
+              <TouchableWithoutFeedback
+                key={item.id}
+                onPress={() =>
+                  this.props.navigation.navigate('ArticleDetail', {
+                    url: `/api/v1/contents/${item.siteId}/${item.channelId}/${
+                      item.id
+                    }`,
+                    title: item.title,
+                  })
+                }
+                style={_styleSheet.index__Navigator}>
+                <View style={_styleSheet['setting-link__item']}>
+                  <View style={_styleSheet['setting-link__title']}>
+                    <Text style={_styleSheet['setting-link__title-text']}>
+                      {item.title}
+                    </Text>
+                  </View>
+
+                  <View style={_styleSheet['setting-link__arrow']}>
+                    <Image
+                      style={_styleSheet['setting-link__arrow--active']}
+                      source={require('@/src/assets/images/other/arrow_right.png')}
+                    />
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
+            ))}
+            {/* <TouchableWithoutFeedback
               onPress={() =>
                 this.props.navigation.navigate('Webview', {
                   sourceUri: 'https://www.codekid.top/#/pages/webview/about',
@@ -46,11 +86,11 @@ class Setting extends Component {
                     关于我们
                   </Text>
                 </View>
-                {/* <View style={_styleSheet['setting-link__extra']}>
+                <View style={_styleSheet['setting-link__extra']}>
                   <Text style={_styleSheet['setting-link__extra-text']}>
                     1.0.0
                   </Text>
-                </View> */}
+                </View>
                 <View style={_styleSheet['setting-link__arrow']}>
                   <Image
                     style={_styleSheet['setting-link__arrow--active']}
@@ -106,7 +146,7 @@ class Setting extends Component {
                   />
                 </View>
               </View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
           </View>
         </View>
       </ScrollView>

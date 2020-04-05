@@ -54,7 +54,7 @@ class Users extends Component {
           </View>
           <View style={_styleSheet['users-link']}>
             <TouchableWithoutFeedback
-              onPress={() => this.props.navigation.navigate('MessageList')}
+              onPress={() => this.props.navigation.navigate('RecommList')}
               style={_styleSheet.index__Navigator}>
               <View style={_styleSheet['users-link__item']}>
                 <View style={_styleSheet['users-link__icon']}>
@@ -106,13 +106,13 @@ class Users extends Component {
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
-              // onPress={() => this.props.navigation.navigate('HelpList')}
-              onPress={() =>
-                this.props.navigation.navigate('Webview', {
-                  sourceUri: 'https://www.codekid.top/#/pages/users/help_list',
-                  title: '帮助中心',
-                })
-              }
+              onPress={() => this.props.navigation.navigate('HelpList')}
+              // onPress={() =>
+              //   this.props.navigation.navigate('Webview', {
+              //     sourceUri: 'https://www.codekid.top/#/pages/users/help_list',
+              //     title: '帮助中心',
+              //   })
+              // }
               style={_styleSheet.index__Navigator}>
               <View style={_styleSheet['users-link__item']}>
                 <View style={_styleSheet['users-link__icon']}>
@@ -135,13 +135,13 @@ class Users extends Component {
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
-              // onPress={() => this.props.navigation.navigate('Setting')}
-              onPress={() =>
-                this.props.navigation.navigate('Webview', {
-                  sourceUri: 'https://www.codekid.top/#/pages/users/setting',
-                  title: '设置',
-                })
-              }
+              onPress={() => this.props.navigation.navigate('Setting')}
+              // onPress={() =>
+              //   this.props.navigation.navigate('Webview', {
+              //     sourceUri: 'https://www.codekid.top/#/pages/users/setting',
+              //     title: '设置',
+              //   })
+              // }
               style={_styleSheet.index__Navigator}>
               <View style={_styleSheet['users-link__item']}>
                 <View style={_styleSheet['users-link__icon']}>

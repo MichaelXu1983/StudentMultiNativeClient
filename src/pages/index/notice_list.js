@@ -49,10 +49,10 @@ class NoticeList extends Component {
               <TouchableWithoutFeedback
                 key={item.id}
                 onPress={() =>
-                  this.props.navigation.navigate('Webview', {
-                    sourceUri: `https://www.codekid.top/#/pages/webview/notice_detail?siteId=${
-                      item.siteId
-                    }&channelId=${item.channelId}&id=${item.id}`,
+                  this.props.navigation.navigate('ArticleDetail', {
+                    url: `/api/v1/contents/${item.siteId}/${item.channelId}/${
+                      item.id
+                    }`,
                     title: item.title,
                   })
                 }

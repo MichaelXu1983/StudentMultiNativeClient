@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
 } from 'react-native';
+import httpRequest from '@/src/utils/request';
 
 import globals from '@/src/styles/globals';
 
@@ -18,9 +19,20 @@ class HelpList extends Component {
   static navigationOptions = {
     title: '帮助中心',
   };
-  componentDidMount() {}
+  state = {
+    list: [],
+  };
+  componentDidMount() {
+    httpRequest('/api/v1/contents/1/175').then(r => {
+      this.setState({
+        list: r.value,
+      });
+    });
+  }
 
   render() {
+    const {list} = this.state;
+
     return (
       //里面只能包含值或表达式，不能有逻辑语句，但可以调用包含逻辑语句的函数表达式
       <ScrollView
@@ -39,7 +51,26 @@ class HelpList extends Component {
               />
             </View>
             <View style={_styleSheet['help-link__ask']}>
-              <TouchableWithoutFeedback
+              {list.map(item => (
+                <TouchableWithoutFeedback
+                  key={item.id}
+                  onPress={() =>
+                    this.props.navigation.navigate('ArticleDetail', {
+                      url: `/api/v1/contents/${item.siteId}/${item.channelId}/${
+                        item.id
+                      }`,
+                      title: item.title,
+                    })
+                  }
+                  style={_styleSheet.index__Navigator}>
+                  <View style={_styleSheet['help-link__title']}>
+                    <Text style={_styleSheet['help-link__title-text']}>
+                      {item.title}
+                    </Text>
+                  </View>
+                </TouchableWithoutFeedback>
+              ))}
+              {/* <TouchableWithoutFeedback
                 onPress={() =>
                   this.props.navigation.navigate('Webview', {
                     sourceUri:
@@ -71,10 +102,10 @@ class HelpList extends Component {
                     上课指南 ？
                   </Text>
                 </View>
-              </TouchableWithoutFeedback>
+              </TouchableWithoutFeedback> */}
             </View>
           </View>
-          <View style={_styleSheet['help-link__separator']} />
+          {/* <View style={_styleSheet['help-link__separator']} />
           <View style={_styleSheet['help-link__item']}>
             <View style={_styleSheet['help-link__icon']}>
               <Image
@@ -114,7 +145,7 @@ class HelpList extends Component {
                 </View>
               </TouchableWithoutFeedback>
             </View>
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     );

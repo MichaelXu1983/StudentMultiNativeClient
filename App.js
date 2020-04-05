@@ -15,9 +15,11 @@ import {
 // 载入页面模块
 import Index from '@/src/pages/index/index.js';
 import Courses from '@/src/pages/courses/index.js';
-import MessageList from '@/src/pages/index/message_list.js';
+// import MessageList from '@/src/pages/index/message_list.js';
+import RecommList from '@/src/pages/index/recomm_list.js';
 import NoticeList from '@/src/pages/index/notice_list.js';
 import Webview from '@/src/pages/webview/index.js';
+import ArticleDetail from '@/src/pages/webview/article_detail.js';
 import Users from '@/src/pages/users/index.js';
 import Setting from '@/src/pages/users/setting.js';
 import HelpList from '@/src/pages/users/help_list.js';
@@ -99,14 +101,17 @@ const App = createStackNavigator(
     Index: {
       screen: TabNavigator,
     },
-    MessageList: {
-      screen: MessageList,
+    RecommList: {
+      screen: RecommList,
     },
     NoticeList: {
       screen: NoticeList,
     },
     Webview: {
       screen: Webview,
+    },
+    ArticleDetail: {
+      screen: ArticleDetail,
     },
     Setting: {
       screen: Setting,

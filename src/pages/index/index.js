@@ -87,7 +87,7 @@ class Index extends Component {
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
-              onPress={() => this.props.navigation.navigate('MessageList')}
+              onPress={() => this.props.navigation.navigate('RecommList')}
               style={_styleSheet.index__message}>
               <View>
                 <Image

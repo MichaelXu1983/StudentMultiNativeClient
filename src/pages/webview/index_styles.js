@@ -9,6 +9,13 @@ export default StyleSheet.create({
     flex: 1,
     marginTop: Platform.OS === 'ios' ? 0 : 0,
   },
+  ContainerStyle: {
+    paddingTop: scalePx2dp(10),
+    paddingBottom: scalePx2dp(10),
+    paddingLeft: scalePx2dp(20),
+    paddingRight: scalePx2dp(20),
+    marginTop: Platform.OS === 'ios' ? 0 : 0,
+  },
   ActivityIndicatorStyle: {
     position: 'absolute',
     left: 0,
